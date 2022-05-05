@@ -1,8 +1,18 @@
-// Assignment code here
+// set variables used in the password
 var abc = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numb = "0123456789";
 var symbols = "!@#$%^&*_-+=";
-var passwordLength = function (min, max) {};
+
+//set minimum and maximum vlaues
+var passwordLength = function (min, max) {
+  (passwordLength = Math.min(12)), Math.max(128);
+};
+
+// set paramaters for password
+var generatePassword = function (passwordLength, para2) {};
+
+// prompt user to enter values in password input
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
