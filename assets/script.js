@@ -1,15 +1,73 @@
 // change all of these to arrays
-var abc = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numb = "0123456789";
-var symb = "!@#$%^&*_-+=";
+var abcUpper = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
+var abcLower = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+];
+var numb = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var symb = ["!", "@", "#", "$", "%", "^", "&", "*", "_", "-", "+", "="];
 
-var allChars = abc + numb + symb;
-var passwordArray = Array(allChars);
+//var allChars = abc + numb + symb;
+//var passwordArray = Array(allChars);
+var length = 0;
+var possibleCharacters = [];
+var generatedCharacters = [];
 
 // set paramaters for password
 function passwordOptions() {
   //prompt the user to select length of the password
-  var length = parseInt(
+  length = parseInt(
     prompt(
       "How many characters do you want your password to be? Choose a number between 8 and 128"
     )
@@ -46,47 +104,55 @@ function passwordOptions() {
     "Click OK if you want to include a special character in your password?"
   );
   //conditional statement to check that password has at least one character type
-  if (
-    lowerCase === false &&
-    upperCase === false &&
-    hasNumber === false &&
-    hasSpecChar === false
-  ) {
-    alert("Please select at least one character type");
-    return null;
+
+  if (upperCase === true) {
+    possibleCharacters = possibleCharacters.concat(abcUpper);
   }
-  var userPasswordInput = {
-    length: length,
-    lowerCase: lowerCase,
-    upperCase: upperCase,
-    hasNumber: hasNumber,
-    hasSpecChar: hasSpecChar,
+  if (lowerCase === true) {
+    possibleCharacters = possibleCharacters.concat(abcLower);
+  }
+  if (hasNumber === true) {
+    possibleCharacters = possibleCharacters.concat(numb);
+  }
+  if (hasSpecChar === true) {
+    possibleCharacters = possibleCharacters.concat(symb);
+  }
+  // var userPasswordInput = {
+  //   length: length,
+  //   lowerCase: lowerCase,
+  //   upperCase: upperCase,
+  //   hasNumber: hasNumber,
+  //   hasSpecChar: hasSpecChar,
+  // };
+  // return userPasswordInput;
+  //generate a random password
+  var generatedPassword = function () {
+    //create a function that houses the math random
+    for (var i = 0; i < length; i++) {
+      var randomOutput =
+        possibleCharacters[
+          Math.floor(Math.random() * possibleCharacters.length)
+        ];
+      generatedCharacters = generatedCharacters.concat(randomOutput);
+      //password += passwordOptions.substring(randomOutput, randomOutput + 1);
+    }
+    return generatedCharacters;
   };
-  return userPasswordInput;
+  generatedPassword();
+  var joinedCharacter = generatedCharacters.join("");
+  return joinedCharacter;
 }
-passwordOptions();
-
-var passwordLength = passwordOptions.length;
-
-//generate a random password
-var generatePassword = function () {
-  //create a function that houses the math random
-  for (var i = 0; i < passwordLength; i++) {
-    var randomOutput = Math.floor(Math.random() * passwordArray.length);
-    password += passwordOptions.substring(randomOutput, randomOutput + 1);
-  }
-  return password;
-  console.log(password);
-};
 
 //use this to take user input and generate random length of characters
 var generateBtn = document.querySelector("#generate");
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", inputPassword);
 
 // Write password to the #password input
 function inputPassword() {
-  var password = generatePassword();
+  //passwordOptions();
+  var password = passwordOptions();
   var passwordText = document.querySelector("#password");
   //place generated password
   passwordText.value = password;
