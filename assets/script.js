@@ -3,26 +3,11 @@ var abc = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numb = "0123456789";
 var symb = "!@#$%^&*_-+=";
 
-var lettersArray = abc.split(" ");
-var numbersArray = numb.split(" ");
-var symbolsArray = symb.split(" ");
-//combine the arrays together to create a new array
-var passwordArray = lettersArray.concat(numbersArray, symbolsArray);
+var allChars = abc + numb + symb;
+var passwordArray = Array(allChars);
 
-// link generate button to function generatePassword
-var generateBtn = document.querySelector("#generate");
-
-//set var to call on user input
-var options = passwordOptions();
-
-//set minimum and maximum vlaues
-//var passwordLength = function (min, max) {
-//  (passwordLength = Math.min(8)), Math.max(128);
-//};
-generateBtn.addEventListener("click", inputPassword);
 // set paramaters for password
 function passwordOptions() {
-  // Add event listener to generate button
   //prompt the user to select length of the password
   var length = parseInt(
     prompt(
@@ -79,24 +64,21 @@ function passwordOptions() {
   };
   return userPasswordInput;
 }
-passwordOptions();
 
 //generate a random password
 var generatePassword = function () {
-  //set the length of the password that will be generated
-  var passwordLength = passwordOptions.length;
-
-  //generate random set of characters
+  //create a function that houses the math random
   for (var i = 0; i < passwordLength; i++) {
     var randomOutput = Math.floor(Math.random() * passwordArray.length);
-    password += lettersArray.substring(randomOutput, randomOutput + 1);
+    password += passwordOptions.substring(randomOutput, randomOutput + 1);
   }
   return generatePassword;
 };
 
 //use this to take user input and generate random length of characters
-
-//create a function that houses the math random
+var generateBtn = document.querySelector("#generate");
+// Add event listener to generate button
+generateBtn.addEventListener("click", inputPassword);
 
 // Write password to the #password input
 function inputPassword() {
