@@ -1,4 +1,4 @@
-// change all of these to arrays
+// create arrays for all character types
 var abcUpper = [
   "A",
   "B",
@@ -58,10 +58,11 @@ var abcLower = [
 var numb = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var symb = ["!", "@", "#", "$", "%", "^", "&", "*", "_", "-", "+", "="];
 
-//var allChars = abc + numb + symb;
-//var passwordArray = Array(allChars);
+//set password length to zeo
 var length = 0;
+//use var to hold possible characters
 var possibleCharacters = [];
+//use var to hold generated characters
 var generatedCharacters = [];
 
 // set paramaters for password
@@ -117,14 +118,16 @@ function passwordOptions() {
   if (hasSpecChar === true) {
     possibleCharacters = possibleCharacters.concat(symb);
   }
-  // var userPasswordInput = {
-  //   length: length,
-  //   lowerCase: lowerCase,
-  //   upperCase: upperCase,
-  //   hasNumber: hasNumber,
-  //   hasSpecChar: hasSpecChar,
-  // };
-  // return userPasswordInput;
+  if (
+    upperCase === false &&
+    lowerCase === false &&
+    hasNumber === false &&
+    hasSpecChar === false
+  ) {
+    alert("You need to include at least one character type!");
+    return null;
+  }
+
   //generate a random password
   var generatedPassword = function () {
     //create a function that houses the math random
@@ -139,6 +142,7 @@ function passwordOptions() {
     return generatedCharacters;
   };
   generatedPassword();
+  //remove commas and spaces from password by joining them
   var joinedCharacter = generatedCharacters.join("");
   return joinedCharacter;
 }

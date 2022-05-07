@@ -1,25 +1,17 @@
 # Password Generator Starter Code
 
-Acceptance Criteria:
-GIVEN I need a new, secure password
+In this README, I'm going to walk you through how I created a random password generator with JavaScript. We'll cover how I used variables to hold information, conditional statements to check user input, and a for loop to generate a random set of characters based on user input.
 
-WHEN I click the button to generate a password
-THEN I am presented with a series of prompts for password criteria
+First I created a set of arrays for the different character types a user could potentially use. These character types include lowercase letters, uppercase letters, numbers, and special characters.
 
-WHEN prompted for password criteria
-THEN I select which criteria to include in the password
+Next I created a series of variables to hold the user's input. These variables include the length of the desired password, whether or not to use lowercase letters, uppercase letters, numbers, and/or special characters.
 
-WHEN prompted for the length of the password
-THEN I choose a length of at least 8 characters and no more than 128 characters
+Once all of the variables were set up, I used a series of conditional statements to check the user's input and make sure it was valid. For example, I checked to see if the length of the password was between 8 and 128 characters. If not, an error message would pop up telling the user that they needed to choose a password length within that range.
 
-WHEN asked for character types to include in the password
-THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
+After all of the input was validated, I used a for loop to generate a random set of characters based on the user's specifications. The loop would run until it reached the desired length, at which point it would stop and the password would be generated.
 
-WHEN I answer each prompt
-THEN my input should be validated and at least one character type should be selected
+Once that password was generated, we passed it into a function that would display it on the screen so the user could see it.
 
-WHEN all prompts are answered
-THEN a password is generated that matches the selected criteria
+Here is the end result:
 
-WHEN the password is generated
-THEN the password is either displayed in an alert or written to the page
+![Screen Shot](./password%20generator.png)
