@@ -64,6 +64,9 @@ function passwordOptions() {
   };
   return userPasswordInput;
 }
+passwordOptions();
+
+var passwordLength = passwordOptions.length;
 
 //generate a random password
 var generatePassword = function () {
@@ -72,7 +75,8 @@ var generatePassword = function () {
     var randomOutput = Math.floor(Math.random() * passwordArray.length);
     password += passwordOptions.substring(randomOutput, randomOutput + 1);
   }
-  return generatePassword;
+  return password;
+  console.log(password);
 };
 
 //use this to take user input and generate random length of characters
